@@ -1,0 +1,105 @@
+/* Reusable containers */
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header .custom-container {
+  display: flex;
+
+  /* Keep this for a two pane view*/
+  flex-direction: row;
+  border: 0;
+}
+
+.custom-container {
+  display: flex;
+
+  /* Keep this for a two pane view*/
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+  border: 1px solid #ccc;
+}
+
+.page-left, .page-right {
+  padding: 10px;
+}
+
+.page-left {
+  flex: 3;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.page-right {
+  flex: 1;
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+
+
+
+/* Not advised to be reused */
+.github-logo, .hugging-face-logo, .kaggle-logo {
+  height: auto;
+  vertical-align: middle;
+  padding-top: 10px;
+}
+
+.github-logo:hover, .hugging-face-logo:hover, .kaggle-logo:hover {
+  opacity: 0.7;
+  transition: opacity 0.3;
+}
+
+.github-logo, .kaggle-logo {
+  width: 30px;
+}
+
+.kaggle-logo {
+  padding-left: 3px;
+}
+
+.hugging-face-logo {
+  width: 35px;
+}
+
+a:hover img {
+  transform: scale(1.1);
+}
+
+.page-right p img {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.page-right p a, .page-right p a:hover {
+  text-decoration: none;
+}
+
+.page-right p a{
+  color: white;
+}
+
+.page-right p a:hover {
+  color: #FFD700;
+}
+
+.sneaky-link img {
+  position: relative;
+  animation: sneak 2s ease-in-out infinite alternate;
+}
+
+@keyframes sneak {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px); /* Adjust for a sneakier step */
+  }
+}

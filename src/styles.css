@@ -1,0 +1,120 @@
+
+/* Reset and base styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Hack Nerd Font', sans-serif;
+}
+
+h1, em, strong, em strong {
+    font-family: 'Hack Nerd Font', sans-serif;
+}
+
+h1 {
+    font-weight: bold; /* Uses bold variant */
+}
+
+em {
+    font-style: italic; /* Uses italic variant */
+}
+
+strong {
+    font-weight: bold; /* Uses bold variant */
+}
+
+em strong {
+    font-weight: bold; /* Uses bold-italic variant */
+    font-style: italic; /* Uses italic variant */
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+
+
+/* Colours */
+main {
+    background-color: #777777;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+main a {
+    color: #ffab40;
+    text-decoration: none;
+}
+
+main a:hover {
+    color: #ffffff;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header {
+    height: 150px;
+}
+
+footer {
+    height: 80px;
+    font-weight: bold;
+    width: 100%;
+    bottom: 0;
+}
+
+footer a {
+    color: #ffab40;
+    text-decoration: none; /* No I don't want the underline */
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+
+
+/* Nerd Fonts */
+/* Hack Nerd Font Regular */
+@font-face {
+    font-family: 'Hack Nerd Font';
+    src: url("/assets/fonts/HackNerdFont-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Hack Nerd Font Bold */
+@font-face {
+    font-family: 'Hack Nerd Font';
+    src: url("/assets/fonts/HackNerdFont-Bold.ttf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Hack Nerd Font Italic */
+@font-face {
+    font-family: 'Hack Nerd Font';
+    src: url("/assets/fonts/HackNerdFont-Italic.ttf") format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Hack Nerd Font Bold Italic */
+@font-face {
+    font-family: 'Hack Nerd Font';
+    src: url("/assets/fonts/HackNerdFont-BoldItalic.ttf") format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
