@@ -1,35 +1,23 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
+import type {Metadata} from "next";
 import React from "react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
-  title: "Hype-less AI",
-  description: "AI talk, without the buzz",
+    title: "Hype-less AI",
+    description: "AI talk, without the buzz",
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    return (
+        <html lang="en">
+        <body className={`antialiased`}>
         {children}
-      </body>
-    </html>
-  );
+        <Analytics />
+        </body>
+        </html>
+    );
 }
