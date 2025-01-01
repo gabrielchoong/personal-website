@@ -5,6 +5,13 @@ import CustomHead from "../components/CustomHead"
 import CustomHeader from "~/app/components/CustomHeader";
 import CustomFooter from "../components/CustomFooter";
 
+import {getBlogs} from "~/lib/db";
+
+export async function getStaticProps() {
+    const blogs = getBlogs();
+    return {props: {blogs}};
+}
+
 export default function Landing() {
     return (
         <div className={"flex-container"}>
@@ -19,16 +26,7 @@ export default function Landing() {
                         <div className={"blog-posts"}>
                             <div className={"post"}>
                                 <h2>Site updating - 2024-10-26</h2>
-                                <p>Hey just so for the curious viewer, I&#39;m currently updating all of my
-                                    code, and
-                                    I&#39;ve taken down all my blogs that absolutely no one read. But, don&#39;t
-                                    panic, in a
-                                    couple of days they should be up and running. I&#39;m in the process of setting
-                                    things up so it&#39;s semi-automated. In the mean time, enjoy an image of a
-                                    cat from an old <a
-                                        href={"https://cat-chitchat.pictures-of-cats.org/p/the-author-of.html"}
-                                        target={"_blank"}>blog</a>.
-                                </p>
+                                <p>...waiting</p>
                             </div>
                         </div>
                     </div>
