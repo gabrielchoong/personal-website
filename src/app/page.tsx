@@ -1,12 +1,10 @@
 import "../styles.css";
 import "../local-styles.css";
 
-import Landing from "./pages/landing";
+import Landing from "./landing/landing";
 
 export default function Home() {
     return (
-        <>
-            <Landing />
-        </>
+        <Landing/>
     );
 }

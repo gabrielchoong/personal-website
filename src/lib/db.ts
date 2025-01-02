@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
-import path from "path";
+import {JSX} from "react";
 
-const dbPath: string = path.resolve("./src/data/blogs.db");
+const dbPath: string = "./src/data/blogs.db";
 
 const db: sqlite3.Database = new sqlite3.Database(dbPath, (err: Error | null): void => {
     if (err) {
@@ -28,66 +28,24 @@ db.run(`
     }
 });
 
-type QueryResult<T> = Promise<T>;
+type blogData = { id: number, title: string, content: string
+    map(element: (blog: blogData) => JSX.Element): never;
+};
 
-const executeQuery: <T>(query: string, params: unknown[]) => QueryResult<T> = <T>(query: string, params: unknown[]): QueryResult<T> => {
-    return new Promise((resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: string) => void) => {
-        db.all(query, params, (err: Error | null, rows: T) => {
-            if (err) {
-                console.error("Database error:", err.message, {query, params});
-                reject(err.message);
-            } else resolve(rows);
-        });
-    });
-}
-
-type blogPromise = Promise<blogData[]>;
-type blogData = { id: number, title: string, content: string };
-
-export const getBlogs: () => blogPromise = (): blogPromise => {
+export async function getBlogs(){
     const query = `
         SELECT *
         FROM blogs
         ORDER BY created_at DESC
     `;
-    return executeQuery<blogData[]>(query, []);
-};
-
-export const insertBlog: (blog: Omit<blogData, "id">) => Promise<blogData> = (blog: Omit<blogData, "id">): Promise<blogData> => {
-    if (!blog.title || !blog.content) {
-        return Promise.reject("Title and content are required");
-    }
-    const query = `
-        INSERT INTO blogs (title, content)
-        VALUES (?, ?)
-    `;
-    return executeQuery(query, [blog.title, blog.content]);
+    return new Promise((resolve: (value: blogData | PromiseLike<blogData>) => void, reject: (reason?: string) => void) => {
+        db.all(query, [], (err: Error | null, rows: blogData) => {
+            if (err) {
+                console.error("Database error:", err.message, {query});
+                reject(err.message);
+            } else resolve(rows);
+        });
+    });
 }
-
-export const updateBlog: (blog: blogData) => Promise<void> = (blog: blogData): QueryResult<void> => {
-    if (!blog.title || !blog.content || !blog.id) {
-        return Promise.reject("ID, title and content are required.");
-    }
-    const query = `
-        UPDATE blogs
-        SET title      = ?,
-            content    = ?,
-            updated_at = CURRENT_TIMESTAMP
-        WHERE id = ?
-    `;
-    return executeQuery<void>(query, [blog.title, blog.content, blog.id]);
-};
-
-export const deleteBlog: (id: number) => Promise<void> = (id: number): QueryResult<void> => {
-    if (!id) {
-        return Promise.reject("ID is required");
-    }
-    const query = `
-        DELETE
-        FROM blogs
-        WHERE id = ?
-    `;
-    return executeQuery<void>(query, [id]);
-};
 
 export default db;

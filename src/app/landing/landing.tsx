@@ -2,17 +2,12 @@ import "../../styles.css";
 import "../../local-styles.css";
 
 import CustomHead from "../components/CustomHead"
-import CustomHeader from "~/app/components/CustomHeader";
+import CustomHeader from "../components/CustomHeader";
 import CustomFooter from "../components/CustomFooter";
-
-import {getBlogs} from "~/lib/db";
-
-export async function getStaticProps() {
-    const blogs = getBlogs();
-    return {props: {blogs}};
-}
+import Blogpost from "../blogpost/blogpost";
 
 export default function Landing() {
+
     return (
         <div className={"flex-container"}>
 
@@ -23,12 +18,9 @@ export default function Landing() {
             <main>
                 <section className={"custom-container"}>
                     <div className={"page-left"}>
-                        <div className={"blog-posts"}>
-                            <div className={"post"}>
-                                <h2>Site updating - 2024-10-26</h2>
-                                <p>...waiting</p>
-                            </div>
-                        </div>
+
+                        <Blogpost/>
+
                     </div>
 
                     <div className={"page-right"}>
