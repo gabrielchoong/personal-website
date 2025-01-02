@@ -41,8 +41,6 @@ header .custom-container {
 }
 
 
-
-
 /* Not advised to be reused */
 .github-logo, .hugging-face-logo, .kaggle-logo {
     height: auto;
@@ -82,7 +80,7 @@ a:hover img {
     text-decoration: none;
 }
 
-.page-right p a{
+.page-right p a {
     color: white;
 }
 

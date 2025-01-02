@@ -28,11 +28,12 @@ db.run(`
     }
 });
 
-type blogData = { id: number, title: string, content: string
+type blogData = {
+    id: number, title: string, content: string
     map(element: (blog: blogData) => JSX.Element): never;
 };
 
-export async function getBlogs(){
+export async function getBlogs() {
     const query = `
         SELECT *
         FROM blogs

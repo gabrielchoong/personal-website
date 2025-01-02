@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import React from "react";
-import { Analytics } from "@vercel/analytics/react"
+import {Analytics} from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
     title: "Hype-less AI",
@@ -16,7 +16,7 @@ export default function RootLayout({
         <html lang="en">
         <body className={`antialiased`}>
         {children}
-        <Analytics />
+        <Analytics/>
         </body>
         </html>
     );
