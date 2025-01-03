@@ -1,10 +1,10 @@
 import "../../styles.css";
 import "../../local-styles.css";
 
-import CustomHead from "../components/CustomHead"
-import CustomHeader from "../components/CustomHeader";
-import CustomFooter from "../components/CustomFooter";
-import Blogpost from "../blogpost/blogpost";
+import CustomHead from "./CustomHead"
+import CustomHeader from "./CustomHeader";
+import CustomFooter from "./CustomFooter";
+import BlogPost from "~/app/components/BlogPost";
 import AuthorDescription from "~/app/components/AuthorDescription";
 
 export default function Landing() {
@@ -20,7 +20,7 @@ export default function Landing() {
                 <section className={"custom-container"}>
                     <div className={"page-left"}>
 
-                        <Blogpost/>
+                        <BlogPost/>
 
                     </div>
 

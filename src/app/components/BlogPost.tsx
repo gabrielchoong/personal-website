@@ -2,7 +2,7 @@ import {getBlogs} from "~/lib/db";
 
 type blogData = { id: number, title: string, content: string };
 
-export default async function Blogpost() {
+export default async function BlogPost() {
 
     const blogs = await getBlogs();
 

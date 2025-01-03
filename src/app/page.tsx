@@ -1,7 +1,7 @@
 import "../styles.css";
 import "../local-styles.css";
 
-import Landing from "./landing/landing";
+import Landing from "./components/Landing";
 
 export default function Home() {
     return (
