@@ -7,15 +7,16 @@ import CustomFooter from "~/app/components/CustomFooter";
 import {notFound} from "next/navigation";
 import {getBlogs} from "~/lib/db";
 
-type BlogProps = {
+type BlogProps = Promise<{
     params: {
         id: string;
     };
-};
+}>
 
-export default async function Blog({params}: BlogProps) {
+export default async function Blog(props: {params: BlogProps}) {
 
-    const blogId = parseInt(params.id, 10);
+    const params = await props.params;
+    const blogId = parseInt(params.params.id, 10);
 
     if (isNaN(blogId)) {
         notFound()
@@ -26,7 +27,7 @@ export default async function Blog({params}: BlogProps) {
         (post) => post.id === blogId
     );
 
-    if (!blog) {
+    if (!selectedBlog) {
         notFound();
     }
 
