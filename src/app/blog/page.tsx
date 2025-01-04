@@ -1,10 +1,6 @@
-import "../../styles.css";
-import "../../local-styles.css";
+import { redirect } from "next/navigation";
 
-export default function Blog() {
-    return (
-        <>
-            <p>Blog Test</p>
-        </>
-    )
+export default function BlogRedirect() {
+    // Redirect to root `/`
+    redirect("/");
 }

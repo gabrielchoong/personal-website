@@ -29,8 +29,10 @@ db.run(`
 });
 
 type blogData = {
+    length: number;
     id: number, title: string, content: string
-    map(element: (blog: blogData) => JSX.Element): never;
+    map(element: (blog: blogData, index: number) => JSX.Element): never;
+    find(param: (post: blogData) => boolean): blogData;
 };
 
 export async function getBlogs() {

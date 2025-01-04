@@ -1,4 +1,7 @@
+import React from "react";
+
 import {getBlogs} from "~/lib/db";
+import Link from "next/link";
 
 type blogData = { id: number, title: string, content: string };
 
@@ -10,14 +13,15 @@ export default async function BlogPost() {
         <div className={"blog-posts"}>
             <div className={"post"}>
                 <h2>Blog Posts</h2>
-                <ul>
-                    {blogs?.map((blog: blogData) => (
-                        <>
-                            <h3 key={blog.id}>{blog.title}</h3>
+                {blogs?.map((blog: blogData, index: number) => (
+                    <React.Fragment key={blog.id}>
+                        <Link href={`/blog/${blog.id}`}>
+                            <h3>{blog.title}</h3>
                             <p>{blog.content}</p>
-                        </>
-                    ))}
-                </ul>
+                            {index < blogs.length - 1 && <hr/>}
+                        </Link>
+                    </React.Fragment>
+                ))}
             </div>
         </div>
     )
